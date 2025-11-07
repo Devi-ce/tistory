@@ -197,6 +197,16 @@
   font-weight: 600;
 }
 
+.like-count {
+  background: #fff;
+  color: #ff6b9d;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #ffe0eb;
+}
+
 .age-location {
   color: #666;
   font-size: 15px;
@@ -242,12 +252,43 @@
   margin-bottom: 24px;
 }
 
+.like-button {
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+}
+
+.like-button:hover {
+  transform: scale(1.05);
+}
+
+.like-button:active {
+  transform: scale(0.95);
+}
+
+.like-button.liked .stat-value {
+  color: #ff6b9d;
+  animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.3); }
+  50% { transform: scale(1.1); }
+}
+
 .stat-box {
   flex: 1;
   background: #f8f8f8;
   padding: 12px;
   border-radius: 12px;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.stat-box:hover {
+  background: #f0f0f0;
 }
 
 .stat-value {
@@ -455,6 +496,234 @@
   font-size: 20px;
   color: #ff6b9d;
 }
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 14px;
+  width: 270px;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  padding: 20px 16px 10px;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.modal-message {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.modal-buttons {
+  border-top: 0.5px solid #c6c6c8;
+}
+
+.modal-button {
+  width: 100%;
+  padding: 11px;
+  background: none;
+  border: none;
+  color: #007AFF;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-button:active {
+  background: #e5e5e5;
+}
+
+.review-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 6;
+  overflow-y: auto;
+}
+
+.review-page.active {
+  transform: translateX(0);
+}
+
+.review-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 0.5px solid #e0e0e0;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+.review-back-btn {
+  font-size: 20px;
+  color: #007AFF;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-header-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+}
+
+.review-summary {
+  padding: 24px 20px;
+  text-align: center;
+  border-bottom: 8px solid #f5f5f5;
+}
+
+.review-average {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ff6b9d;
+  margin-bottom: 8px;
+}
+
+.review-stars {
+  font-size: 20px;
+  color: #ff6b9d;
+  margin-bottom: 8px;
+}
+
+.review-count {
+  font-size: 14px;
+  color: #999;
+}
+
+.review-list {
+  padding: 20px;
+}
+
+.review-item {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.review-user-info {
+  flex: 1;
+}
+
+.review-username {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.review-rating {
+  color: #ff6b9d;
+  font-size: 14px;
+}
+
+.review-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.review-tag-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.review-tag-item {
+  padding: 4px 10px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+
 </style>
 </head>
 <body>
@@ -463,7 +732,7 @@
   <div class="notch"></div>
   <div class="screen">
     <div class="status-bar">
-      <span>9:41</span>
+      <span id="currentTime">9:41</span>
       <span>⚡︎ 100%</span>
     </div>
     <div class="browser-bar">
@@ -479,6 +748,7 @@
           <div class="name-section">
             <span class="name">Heize</span>
             <span class="verified">✓ 인증</span>
+            <span class="like-count">♡ 257</span>
           </div>
           <div class="age-location">18세 · 고등학생</div>
           
@@ -489,13 +759,13 @@
           </div>
           
           <div class="stats">
-            <div class="stat-box">
-              <div class="stat-value">4.9</div>
-              <div class="stat-label">평점</div>
+            <div class="stat-box like-button" onclick="toggleLike()">
+              <div class="stat-value" id="likeIcon">♡</div>
+              <div class="stat-label">좋아요!</div>
             </div>
-            <div class="stat-box">
-              <div class="stat-value">127</div>
-              <div class="stat-label">고객 수</div>
+            <div class="stat-box" onclick="showReviews()">
+              <div class="stat-value">4.9</div>
+              <div class="stat-label">평점 · 리뷰 보기</div>
             </div>
             <div class="stat-box">
               <div class="stat-value">88%</div>
@@ -605,19 +875,198 @@
           </div>
         </div>
 
-        <button class="book-btn" onclick="alert('예약이 완료되었습니다!')">결제하기</button>
+        <button class="book-btn" onclick="showModal()">결제하기</button>
+      </div>
+      
+      <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <div class="modal-header">
+            <div class="modal-title">예약 완료</div>
+            <div class="modal-message">예약이 성공적으로 완료되었습니다.<br>즐거운 시간 되세요! 💕</div>
+          </div>
+          <div class="modal-buttons">
+            <button class="modal-button" onclick="closeModal()">확인</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="reviewPage" class="review-page">
+        <div class="review-header">
+          <div class="review-back-btn" onclick="closeReviews()">←</div>
+          <div class="review-header-title">리뷰</div>
+        </div>
+        
+        <div class="review-summary">
+          <div class="review-average">4.9</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-count">총 147개의 리뷰</div>
+        </div>
+        
+        <div class="review-list">
+          <div class="review-item">
+            <div class="review-user">
+              <div class="review-avatar">D</div>
+              <div class="review-user-info">
+                <div class="review-username">David23**</div>
+                <div class="review-date">2024.11.02</div>
+              </div>
+              <div class="review-rating">★★★★★</div>
+            </div>
+            <div class="review-text">
+              정말 편안하고 좋은 시간이었습니다.<br>
+              이야기도 잘 들어주시고 배려심이 많으셔서 다음에도 꼭 예약하고 싶어요!
+            </div>
+            <div class="review-tag-list">
+              <span class="review-tag-item">친절해요</span>
+              <span class="review-tag-item">대화가 편해요</span>
+            </div>
+          </div>
+          
+          <div class="review-item">
+            <div class="review-user">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">N</div>
+              <div class="review-user-info">
+                <div class="review-username">Neko**</div>
+                <div class="review-date">2024.10.28</div>
+              </div>
+              <div class="review-rating">★★★★★</div>
+            </div>
+            <div class="review-text">
+              귀엽다냥 나는 이런 쿨타입 무뚝뚝 소녀가 좋다냥
+            </div>
+            <div class="review-tag-list">
+              <span class="review-tag-item">예뻐요</span>
+              <span class="review-tag-item">귀여워요</span>
+            </div>
+          </div>
+          
+          <div class="review-item">
+            <div class="review-user">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">S</div>
+              <div class="review-user-info">
+                <div class="review-username">sk**</div>
+                <div class="review-date">2024.10.25</div>
+              </div>
+              <div class="review-rating">★★☆☆☆</div>
+            </div>
+            <div class="review-text">
+              생긴 건 예쁘고 귀여운데, 애교가 영 없음<br>별로 재미 없다는 느낌?
+            </div>
+            <div class="review-tag-list">
+            <span class="review-tag-item">예뻐요</span>
+              <span class="review-tag-item">귀여워요</span>
+            </div>
+          </div>
+          
+          <div class="review-item">
+            <div class="review-user">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">G</div>
+              <div class="review-user-info">
+                <div class="review-username">girlov**</div>
+                <div class="review-date">2024.10.20</div>
+              </div>
+              <div class="review-rating">★★★★★</div>
+            </div>
+            <div class="review-text">
+              내 이야기를 들어줘서 고마워.<br>
+              렌탈 여친 서비스를 신청할 때 큰 기대는 없었는데, 진심으로 빛을 찾은 것 같은 기분이 들었어.<br>
+              다음에도 너와 함께 시간을 보내고 싶어서, 내일도 살아가야겠다는 생각이 들었어.
+            </div>
+            <div class="review-tag-list">
+              <span class="review-tag-item">쿨해요</span>
+              <span class="review-tag-item">또 만나고 싶어요</span>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-user">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">O</div>
+              <div class="review-user-info">
+                <div class="review-username">onlyse**</div>
+                <div class="review-date">2024.10.20</div>
+              </div>
+              <div class="review-rating">★★★☆☆</div>
+            </div>
+            <div class="review-text">
+              떡치고 싶은 거면 다른데 알아보는게 나음<br>
+              외모랑 몸매는 ㅆㅅㅌㅊ
+            </div>
+            <div class="review-tag-list">
+              <span class="review-tag-item">예뻐요</span>
+            </div>
+          </div>          
+          
+          <div class="review-item">
+            <div class="review-user">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">L</div>
+              <div class="review-user-info">
+                <div class="review-username">love58**</div>
+                <div class="review-date">2024.10.15</div>
+              </div>
+              <div class="review-rating">★★★★★</div>
+            </div>
+            <div class="review-text">
+              렌탈 여친들은 큰 손 고객이 아니면 대충대충 임하는 경우가 많은데, 헤이즈는 그렇지 않아.<br>
+              언제나 받은 만큼 대접해 주지.<br>
+              그녀를 대여한다면 실망하지 않을 거야!
+            </div>
+            <div class="review-tag-list">
+              <span class="review-tag-item">예뻐요</span>
+              <span class="review-tag-item">재미있어요</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
 <script>
 const profilePage = document.getElementById('profilePage');
 const bookingPage = document.getElementById('bookingPage');
+const reviewPage = document.getElementById('reviewPage');
 const urlBar = document.getElementById('urlBar');
 
 let selectedDateTypes = [];
 let selectedTimeType = null;
+let isLiked = false;
+let likeCount = 257;
+
+function updateTime() {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const timeString = `${hours}:${minutes.toString().padStart(2, '0')}`;
+  document.getElementById('currentTime').textContent = timeString;
+}
+
+// 페이지 로드 시 시간 업데이트
+updateTime();
+// 1분마다 시간 업데이트
+setInterval(updateTime, 60000);
+
+function toggleLike() {
+  const likeButton = document.querySelector('.like-button');
+  const likeIcon = document.getElementById('likeIcon');
+  const likeCountDisplay = document.querySelector('.like-count');
+  
+  if (isLiked) {
+    // 좋아요 취소
+    isLiked = false;
+    likeCount--;
+    likeIcon.textContent = '♡';
+    likeButton.classList.remove('liked');
+  } else {
+    // 좋아요 추가
+    isLiked = true;
+    likeCount++;
+    likeIcon.textContent = '♥';
+    likeButton.classList.add('liked');
+  }
+  
+  likeCountDisplay.textContent = '♡ ' + likeCount;
+}
 
 function showBooking() {
   profilePage.classList.add('sliding-left');
@@ -629,7 +1078,10 @@ function showBooking() {
 }
 
 function goBack() {
-  if (bookingPage.classList.contains('active')) {
+  if (reviewPage.classList.contains('active')) {
+    reviewPage.classList.remove('active');
+    urlBar.textContent = '🔒 rental-girlfriend.com/profile';
+  } else if (bookingPage.classList.contains('active')) {
     bookingPage.classList.remove('active');
     profilePage.classList.remove('sliding-left');
     urlBar.textContent = '🔒 rental-girlfriend.com/profile';
@@ -694,6 +1146,24 @@ function updateTotal() {
   }
   
   document.getElementById('totalPrice').textContent = '£' + total;
+}
+
+function showModal() {
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+function showReviews() {
+  reviewPage.classList.add('active');
+  urlBar.textContent = '🔒 rental-girlfriend.com/reviews';
+}
+
+function closeReviews() {
+  reviewPage.classList.remove('active');
+  urlBar.textContent = '🔒 rental-girlfriend.com/profile';
 }
 </script>
 
