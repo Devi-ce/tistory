@@ -1,4 +1,6 @@
-<style>
+// CSS 추가
+const style = document.createElement('style');
+style.textContent = `
   .shake-text {
     display: inline-block;
   }
@@ -19,9 +21,10 @@
   .shake-text.shaking {
     animation: earthquake 0.15s ease-in-out 0s 7;
   }
-</style>
+`;
+document.head.appendChild(style);
 
-<script>
+// JavaScript 실행
 document.addEventListener('DOMContentLoaded', function() {
   const shakeElements = document.querySelectorAll('.shake-text');
   const observed = new Set();
@@ -44,4 +47,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
   shakeElements.forEach(el => observer.observe(el));
 });
-</script>
