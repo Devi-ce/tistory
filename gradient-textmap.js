@@ -1,4 +1,4 @@
-(function() {
+ (function() {
   console.log('🎨 Gradient.js 로드 시작');
   const gradientStyle = document.createElement('style');
   gradientStyle.textContent = `
@@ -12,7 +12,7 @@
       display: inline;
     }
     .gradient-ocean {
-      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe, #667eea);
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe, #b6dcff, #667eea);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
