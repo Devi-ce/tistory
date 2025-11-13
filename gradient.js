@@ -1,6 +1,6 @@
 // CSS 추가
-const style = document.createElement('style');
-style.textContent = `
+const gradientStyle = document.createElement('style');
+gradientStyle.textContent = `
   .gradient-text {
     background: linear-gradient(90deg, #cab7ee, #3c1d61, #ebc2fa, #ab64dc, #cab7ee);
     background-size: 200% auto;
@@ -40,4 +40,4 @@ style.textContent = `
     }
   }
 `;
-document.head.appendChild(style);
+document.head.appendChild(gradientStyle);
